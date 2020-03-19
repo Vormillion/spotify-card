@@ -175,7 +175,12 @@ class SpotifyCard extends Component {
           <div class="spotify_container">
             <${Header} />
             <div class="playlists">
-              ${playlists.map((playlist, idx) => html`
+              ${playlists.map(
+                (playlist, idx) => 
+                  const image = playlist.images[0]
+                    ? playlist.images[0].url
+                    : 'https://via.placeholder.com/150x150.png?text=No+image';
+                    return html`
                 <div class="${`playlist ${this.getHighlighted(playlist)}`}" onClick=${(event) => this.onPlaylistSelect(playlist, idx, event, this)}>
                     <div class="playlist__cover_art"></div>
                     <div class="playlist__number">${idx + 1}</div>
