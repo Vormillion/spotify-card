@@ -177,7 +177,7 @@ class SpotifyCard extends Component {
             <div class="playlists">
               ${playlists.map((playlist, idx) => html`
                 <div class="${`playlist ${this.getHighlighted(playlist)}`}" onClick=${(event) => this.onPlaylistSelect(playlist, idx, event, this)}>
-                    <div class="playlist__cover_art"><img src="${playlist.images[0].url}"/></div>
+                    <div class="playlist__cover_art"></div>
                     <div class="playlist__number">${idx + 1}</div>
                     <div class="${`playlist__playicon ${this.getIsPlayingClass(playlist)}`}">►</div>
                     <div class="playlist__title">${playlist.name}</div>
