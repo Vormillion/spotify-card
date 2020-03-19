@@ -171,24 +171,29 @@ class SpotifyCard extends Component {
           `;
     }
 
+const playlistStyle = { height: this.props.height ? parseInt(this.props.height) : 'auto' };
+
     return html`
-          <div class="spotify_container">
-            <${Header} />
-            <div class="playlists">
-              ${playlists.map(
-                (playlist, idx) => 
-                  const image = playlist.images[0]
-                    ? playlist.images[0].url
-                    : 'https://via.placeholder.com/150x150.png?text=No+image';
-                    return html`
-                <div class="${`playlist ${this.getHighlighted(playlist)}`}" onClick=${(event) => this.onPlaylistSelect(playlist, idx, event, this)}>
-                    <div class="playlist__cover_art"></div>
-                    <div class="playlist__number">${idx + 1}</div>
-                    <div class="${`playlist__playicon ${this.getIsPlayingClass(playlist)}`}">►</div>
-                    <div class="playlist__title">${playlist.name}</div>
-                </div>
-              `)}
-            </div>
+      <div class="spotify_container">
+        <${Header} />
+        <div class="playlists" style=${playlistStyle}>
+          ${playlists.map((playlist, idx) => {
+            const image = playlist.images[0]
+              ? playlist.images[0].url
+              : 'https://via.placeholder.com/150x150.png?text=No+image';
+            return html`
+              <div
+                class="${`playlist ${this.getHighlighted(playlist)}`}"
+                onClick=${event => this.onPlaylistSelect(playlist, idx, event, this)}
+              >
+                <div class="playlist__cover_art"><img src="${image}" /></div>
+                <div class="playlist__number">${idx + 1}</div>
+                <div class="${`playlist__playicon ${this.getIsPlayingClass(playlist)}`}">►</div>
+                <div class="playlist__title">${playlist.name}</div>
+              </div>
+            `;
+          })}
+        </div>
             <div class="controls">
                 <${PlayerSelect} devices=${devices} selectedDevice=${selectedDevice} onMediaplayerSelect=${device => this.setState({selectedDevice: device})}/>
             </div>
