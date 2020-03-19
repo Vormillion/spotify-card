@@ -63,7 +63,8 @@ class SpotifyCard extends Component {
       playingPlaylist: null,
       authenticationRequired: true
     };
-    this.scopes = ['user-read-private', 'user-read-email', 'playlist-read-private', 'user-read-birthdate', 'user-read-playback-state', 'user-modify-playback-state'];
+    
+    this.scopes = ['playlist-read-private', 'playlist-read-collaborative', 'user-read-playback-state', 'user-modify-playback-state'];
   }
 
   async componentDidMount() {
